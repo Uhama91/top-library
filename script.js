@@ -18,13 +18,20 @@ let read = document.querySelector('#read');
 
 let newBook = new Book(title, author, pages, read);
 
-//
+
 function addBookToLibrary() {
+
+    //prototype method to push in the array prop from each newBook object
   Book.prototype.title = function(){
     myLibrary.push(this.title);
   }
   Book.prototype.author = function(){
     myLibrary.push(this.author);
   }
-  Book.prototype.
+  Book.prototype.pages = function(){
+    myLibrary.push(this.pages);
+  }
+  Book.prototype.read = function(){
+    myLibrary.push(this.read);
+  }
 }
