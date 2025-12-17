@@ -1,37 +1,26 @@
 const myLibrary = [];
 
 // the constructor
-function Book(title, author, pages, read) {
+function Book(id, title, author, pages, read) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read; 
 }
 
-
-// create a new book
-
-let title = document.querySelector('#title');
-let author = document.querySelector('#author');
-let pages = document.querySelector('#pages');
-let read = document.querySelector('#read');
-
-let newBook = new Book(title, author, pages, read);
-
+let titleInput = document.querySelector('#title');
+let authorInput = document.querySelector('#author');
+let pagesInput = document.querySelector('#pages');
+let readInput = document.querySelector('#read');
+let button = document.querySelector('button');
 
 function addBookToLibrary() {
-
-    //prototype method to push in the array prop from each newBook object
-  Book.prototype.title = function(){
-    myLibrary.push(this.title);
-  }
-  Book.prototype.author = function(){
-    myLibrary.push(this.author);
-  }
-  Book.prototype.pages = function(){
-    myLibrary.push(this.pages);
-  }
-  Book.prototype.read = function(){
-    myLibrary.push(this.read);
-  }
+    const newId = crypto.randomUUID();
+    let newTitleBook = titleInput.value;
+    let newAuthorBook = authorInput.value;
+    let newPagesBook = pagesInput.value;
+    let newRead = readInput.value;
+   let newBook = new Book(newId, newTitleBook, newAuthorBook, newPagesBook, newRead);
+   myLibrary.push(newBook);
 }
