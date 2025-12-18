@@ -23,7 +23,7 @@ function addBookToLibrary() {
     let newTitleBook = titleInput.value;
     let newAuthorBook = authorInput.value;
     let newPagesBook = pagesInput.value;
-    let newRead = readInput.value;
+    let newRead = readInput.checked? 'Yes' : 'No';
    let newBook = new Book(newId, newTitleBook, newAuthorBook, newPagesBook, newRead);
    myLibrary.push(newBook);
 }
