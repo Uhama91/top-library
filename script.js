@@ -1,4 +1,28 @@
-const myLibrary = [];
+const { createElement } = require("react");
+
+const myLibrary = [
+    {
+        id: crypto.randomUUID(),
+        title: "Harry Potter à l'école des sorciers",
+        author: "J.K. Rowling",
+        pages: 320,
+        read: 'oui'
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "Le Seigneur des Anneaux",
+        author: "J.R.R. Tolkien",
+        pages: 1178,
+        read: 'non'
+    },
+    {
+        id: crypto.randomUUID(),
+        title: "1984",
+        author: "George Orwell",
+        pages: 368,
+        read: 'oui'
+    }
+];
 
 // the constructor
 function Book(id, title, author, pages, read) {
@@ -23,4 +47,10 @@ function addBookToLibrary() {
     let newRead = readInput.value;
    let newBook = new Book(newId, newTitleBook, newAuthorBook, newPagesBook, newRead);
    myLibrary.push(newBook);
+}
+
+let 
+
+for(let i = 0; i<myLibrary.length; i++){
+    createElement
 }
