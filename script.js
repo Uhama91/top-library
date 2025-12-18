@@ -1,5 +1,3 @@
-const { createElement } = require("react");
-
 const myLibrary = [
     {
         id: crypto.randomUUID(),
@@ -49,8 +47,27 @@ function addBookToLibrary() {
    myLibrary.push(newBook);
 }
 
-let 
+let table = document.querySelector('tbody');
 
 for(let i = 0; i<myLibrary.length; i++){
-    createElement
+    let newRow = document.createElement('tr');
+    let newId = document.createElement('td');
+    let newTitle = document.createElement('td');
+    let newAuthor = document.createElement('td');
+    let newPages = document.createElement('td');
+    let newRead = document.createElement('td');
+
+    newId.textContent = myLibrary[i].id;
+    newTitle.textContent = myLibrary[i].title;
+    newAuthor.textContent = myLibrary[i].author;
+    newPages.textContent = myLibrary[i].pages;
+    newRead.textContent = myLibrary[i].read;
+
+    newRow.appendChild(newId);
+    newRow.appendChild(newTitle);
+    newRow.appendChild(newAuthor);
+    newRow.appendChild(newPages);
+    newRow.appendChild(newRead);
+
+    table.appendChild(newRow);
 }
