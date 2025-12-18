@@ -1,6 +1,6 @@
 const myLibrary = [];
 
-// the constructor
+// the book constructor
 function Book(id, title, author, pages, read) {
     this.id = id;
     this.title = title;
@@ -13,8 +13,11 @@ let titleInput = document.querySelector('#title');
 let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
 let readInput = document.querySelector('#read');
+
 let button = document.querySelector('button');
 
+
+// add book object in the myLibrary array
 function addBookToLibrary() {
     const newId = crypto.randomUUID();
     let newTitleBook = titleInput.value;
@@ -25,10 +28,12 @@ function addBookToLibrary() {
    myLibrary.push(newBook);
 }
 
+// display the object as a line in the table
 let table = document.querySelector('tbody');
 
 function displayBook(){
-    
+    table.innerHTML = '';
+
     for(let i = 0; i<myLibrary.length; i++){
     let newRow = document.createElement('tr');
     let newId = document.createElement('td');
@@ -53,3 +58,10 @@ function displayBook(){
     }
 } 
 
+function addNewBook(event){
+    event.preventDefault();
+    addBookToLibrary();
+    displayBook();
+}
+
+button.addEventListener('click', addNewBook)
