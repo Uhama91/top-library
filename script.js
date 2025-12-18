@@ -1,26 +1,4 @@
-const myLibrary = [
-    {
-        id: crypto.randomUUID(),
-        title: "Harry Potter à l'école des sorciers",
-        author: "J.K. Rowling",
-        pages: 320,
-        read: 'oui'
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "Le Seigneur des Anneaux",
-        author: "J.R.R. Tolkien",
-        pages: 1178,
-        read: 'non'
-    },
-    {
-        id: crypto.randomUUID(),
-        title: "1984",
-        author: "George Orwell",
-        pages: 368,
-        read: 'oui'
-    }
-];
+const myLibrary = [];
 
 // the constructor
 function Book(id, title, author, pages, read) {
@@ -49,7 +27,9 @@ function addBookToLibrary() {
 
 let table = document.querySelector('tbody');
 
-for(let i = 0; i<myLibrary.length; i++){
+function displayBook(){
+    
+    for(let i = 0; i<myLibrary.length; i++){
     let newRow = document.createElement('tr');
     let newId = document.createElement('td');
     let newTitle = document.createElement('td');
@@ -70,4 +50,6 @@ for(let i = 0; i<myLibrary.length; i++){
     newRow.appendChild(newRead);
 
     table.appendChild(newRow);
-}
+    }
+} 
+
