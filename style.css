@@ -1,3 +1,8 @@
+.h1-cont {
+    display: flex;
+    justify-content: center;
+}
+
 button {
     width: 80px;
     height: 20px;
@@ -8,7 +13,13 @@ button {
     justify-content: center;
 }
 table {
-    width: 60vw;
+    width: 80%;
+    border: 4px black solid;
+    border-spacing: 0;
+}
+
+table *{
+    border: 2px black solid;
 }
 
 form {

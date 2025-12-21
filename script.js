@@ -36,18 +36,23 @@ function displayBook(){
 
     for(let i = 0; i<myLibrary.length; i++){
     let newRow = document.createElement('tr');
+
+    let newDeleteButton = document.createElement('button')
     let newId = document.createElement('td');
     let newTitle = document.createElement('td');
     let newAuthor = document.createElement('td');
     let newPages = document.createElement('td');
     let newRead = document.createElement('td');
 
+    newDeleteButton.textContent = 'Delete row';
     newId.textContent = myLibrary[i].id;
     newTitle.textContent = myLibrary[i].title;
     newAuthor.textContent = myLibrary[i].author;
     newPages.textContent = myLibrary[i].pages;
     newRead.textContent = myLibrary[i].read;
 
+    newRow.setAttribute('data-book-id', myLibrary[i].id);
+    newRow.appendChild(newDeleteButton);
     newRow.appendChild(newId);
     newRow.appendChild(newTitle);
     newRow.appendChild(newAuthor);
@@ -55,6 +60,20 @@ function displayBook(){
     newRow.appendChild(newRead);
 
     table.appendChild(newRow);
+    const deleteRow = () => {
+        // récupérer l'ID depuis le data-attribute
+        const bookId = newRow.getAttribute('data-book-id');
+
+
+        const bookIndex = myLibrary.findIndex(book => book.id ===  bookId);
+
+        if(bookIndex > -1){
+            myLibrary.splice(bookIndex, 1)
+        }
+
+        displayBook();
+    }
+    newDeleteButton.addEventListener('click', deleteRow)
     }
 } 
 
