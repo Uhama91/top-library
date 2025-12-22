@@ -9,6 +9,10 @@ function Book(id, title, author, pages, read) {
     this.read = read; 
 }
 
+Book.prototype.toggleRead = function(){
+    this.read = this.read === 'Yes'? 'No' : 'Yes';
+}
+
 let titleInput = document.querySelector('#title');
 let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
@@ -35,45 +39,60 @@ function displayBook(){
     table.innerHTML = '';
 
     for(let i = 0; i<myLibrary.length; i++){
-    let newRow = document.createElement('tr');
+        let newRow = document.createElement('tr');
 
-    let newDeleteButton = document.createElement('button')
-    let newId = document.createElement('td');
-    let newTitle = document.createElement('td');
-    let newAuthor = document.createElement('td');
-    let newPages = document.createElement('td');
-    let newRead = document.createElement('td');
+        let newDeleteButton = document.createElement('button')
+        let newId = document.createElement('td');
+        let newTitle = document.createElement('td');
+        let newAuthor = document.createElement('td');
+        let newPages = document.createElement('td');
+        let newRead = document.createElement('td');
 
-    newDeleteButton.textContent = 'Delete row';
-    newId.textContent = myLibrary[i].id;
-    newTitle.textContent = myLibrary[i].title;
-    newAuthor.textContent = myLibrary[i].author;
-    newPages.textContent = myLibrary[i].pages;
-    newRead.textContent = myLibrary[i].read;
+        newDeleteButton.textContent = 'Delete row';
+        newId.textContent = myLibrary[i].id;
+        newTitle.textContent = myLibrary[i].title;
+        newAuthor.textContent = myLibrary[i].author;
+        newPages.textContent = myLibrary[i].pages;
 
-    newRow.setAttribute('data-book-id', myLibrary[i].id);
-    newRow.appendChild(newDeleteButton);
-    newRow.appendChild(newId);
-    newRow.appendChild(newTitle);
-    newRow.appendChild(newAuthor);
-    newRow.appendChild(newPages);
-    newRow.appendChild(newRead);
+        newRow.setAttribute('data-book-id', myLibrary[i].id);
+        newRow.appendChild(newDeleteButton);
+        newRow.appendChild(newId);
+        newRow.appendChild(newTitle);
+        newRow.appendChild(newAuthor);
+        newRow.appendChild(newPages);
+        newRow.appendChild(newRead);
 
-    table.appendChild(newRow);
-    const deleteRow = () => {
-        // récupérer l'ID depuis le data-attribute
-        const bookId = newRow.getAttribute('data-book-id');
+        table.appendChild(newRow);
 
+        // Delete a row
+        const deleteRow = () => {
+            // 1. récupérer l'ID depuis le data-attribute
+            const bookId = newRow.getAttribute('data-book-id');
 
-        const bookIndex = myLibrary.findIndex(book => book.id ===  bookId);
+            // 2. Chercher l'index de Ce livre (pas le dernier, mais celui qui match l'ID)
+            const bookIndex = myLibrary.findIndex(book => book.id ===  bookId);
 
-        if(bookIndex > -1){
-            myLibrary.splice(bookIndex, 1)
+            // 3. Si trouvé (index >= 0), supprimer
+            if(bookIndex > -1){
+                myLibrary.splice(bookIndex, 1)
+            }
+
+            // 4. Réafficher  tout le tabeleau
+            displayBook();
+        }
+        newDeleteButton.addEventListener('click', deleteRow)
+        
+        // create toogle button to change read status
+        let newToggleButton = document.createElement('button');
+        newToggleButton.textContent = myLibrary[i].read;
+        newRead.appendChild(newToggleButton);
+        
+        //toggle to switch read's statu between yes and no with button 
+        const readToggle = () => {
+            
         }
 
-        displayBook();
-    }
-    newDeleteButton.addEventListener('click', deleteRow)
+        newToggleButton.addEventListener('click',)
     }
 } 
 
