@@ -88,11 +88,19 @@ function displayBook(){
         newRead.appendChild(newToggleButton);
         
         //toggle to switch read's statu between yes and no with button 
-        const readToggle = () => {
-            
+        const switchReadStatus = () => {
+            const bookId = newRow.getAttribute('data-book-id');
+
+            const bookIndex = myLibrary.findIndex(book => book.id ===  bookId);
+
+            if(bookIndex > -1){
+                myLibrary[bookIndex].toggleRead();
+            }
+
+            displayBook(); 
         }
 
-        newToggleButton.addEventListener('click',)
+        newToggleButton.addEventListener('click',switchReadStatus)
     }
 } 
 
